@@ -10,13 +10,21 @@
 export CC = gcc
 CFLAGS+= -I. 
 
-SRC += pthread.c
+SRC_CLIENT += demo1_client.c
+SRC_SERVER += demo1_server_multi_thread.c
 
-OBJ = $(SRC:.c=.o)
-BIN := pthread
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
 
-$(BIN): $(OBJ)
-	$(CC) -o $@ $(OBJ) -g -W $(CFLAGS) -lpthread
+all: client server
+
+client: $(OBJ_CLIENT)
+	$(CC) -o $@ $(OBJ_CLIENT) -g -W $(CFLAGS) -lpthread
 	rm -r *.o
+
+server: $(OBJ_SERVER)
+	$(CC) -o $@ $(OBJ_SERVER) -g -W $(CFLAGS) -lpthread
+	rm -r *.o
+
 clean:
-	rm -f *.o $(BIN)
+	rm -f *.o client server
