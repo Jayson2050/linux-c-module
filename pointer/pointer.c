@@ -66,10 +66,13 @@ struct_2_tp test_create(const char *desc)
     return ptr_tmp;
 }
 
-/* 传入结构体指针，然后对结构体成员进行赋值 */
+/* 传入结构体指针，然后从其他函数获取一个指针 */
 void fun3(struct_2_t *ptr)
 {
-    ptr = test_create("This is fun3");
+	struct_2_t *ptr_local = NULL;
+    ptr_local = test_create("This is fun3");
+	ptr = ptr_local; // 局部变量在函数运行结束就被销毁，因此ptr无法获ptr_local指向的内存地址
+	// ptr = test_create("This is fun3"); // 该行等价于上面的处理，因此传入fun3的指针在调用函数后依然是无法从fun3中获取到内存指针的
     printf("fun3 内部从其他函数返回获取到的ptr=%p\r\n", ptr);
 }
 
