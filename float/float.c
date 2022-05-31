@@ -5,7 +5,7 @@
  * @Author: shenhaojie
  * @Date: 2022-05-31 18:28:28
  * @LastEditors: shenhaojie
- * @LastEditTime: 2022-05-31 17:54:32
+ * @LastEditTime: 2022-05-31 18:00:27
  */
 #include <stdlib.h>
 #include <stdio.h>
@@ -32,10 +32,10 @@ void main( void )
 	a1 = 10.0;
 	a2 = 5.0;
     rlt = a1/a2;
-	printf( "===1 10.0/5.0 = %f\r\n", rlt);
+	printf( "10.0/5.0 = %f\r\n", rlt);
 
 	rlt = a1/2;
-	printf( "===2 10.0/2 = %f\r\n", rlt);
+	printf( "10.0/2 = %f\r\n", rlt);
 
 	printf( "\n");
 	
