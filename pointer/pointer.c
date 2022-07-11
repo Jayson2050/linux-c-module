@@ -88,6 +88,15 @@ void fun4(struct_2_t **ptr)
     printf("fun4 内部从其他函数返回获取到的ptr=%p\r\n", ptr);
 }
 
+
+/* 传入结构体指针，然后对结构体成员进行赋值，包含memcpy方式 */
+void fun5(struct_2_t *ptr)
+{
+    int data = 0x11223344;
+    memcpy(&ptr->data, &data, sizeof(data));
+    ptr->str = "get a string";
+}
+
 int main(void)
 {
     int test_id = 1;
@@ -95,6 +104,7 @@ int main(void)
     struct_2_tp test2 = NULL;
     static struct_2_tp test3 = NULL;
     struct_2_t *test4 = (struct_2_t *)malloc(sizeof(struct_2_t));
+    struct_2_t *test5 = (struct_2_t *)malloc(sizeof(struct_2_t));
 
 
     printf("========== test %d ========== \r\n", test_id++);
@@ -208,6 +218,27 @@ int main(void)
         printf("test4.str=%s\r\n",test4->str);
         printf("2 pointer address=0x%p\r\n", test4);
     }
+
+
+    printf("========== test %d ========== \r\n", test_id++);
+    /* 测试函数传入已分配内存的结构体指针后能否返回数据, 该方式会导致内存泄漏，
+    因为指向之前malloc分配内存的指针没有free的情况下又指向了其他内存 */
+    fun5(test5);
+    if(test5 == NULL)
+    {
+        printf("pointer is NULL\r\n");
+    }
+    else
+    {
+        printf("test5.data=%#08x\r\n",test5->data);
+        printf("test5.str=%s\r\n",test5->str);
+        printf("2 pointer address=0x%p\r\n", test5);
+    }
+
+    free(test4);
+    free(test5);
+    test4 = NULL;
+    test5 = NULL;
 
     return 0;
 }

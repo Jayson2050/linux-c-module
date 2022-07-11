@@ -10,15 +10,13 @@
 export CC = gcc
 CFLAGS+= -I. 
 
-#SRC += pointer.c
-SRC += struct_pointer.c
+SRC += enum.c
 
 OBJ = $(SRC:.c=.o)
-BIN := test.exe
+BIN := test
 
 $(BIN): $(OBJ)
-	$(CC) -o $@ $(OBJ) -g -W $(CFLAGS)
+	$(CC) -o $@ $(OBJ) -g -W $(CFLAGS) -lpthread
 	rm -r *.o
-	chmod +x $(BIN)
 clean:
 	rm -f *.o $(BIN)
