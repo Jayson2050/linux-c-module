@@ -1,3 +1,12 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @@Company: DCIT-SH
+ * @Author: shenhaojie
+ * @Date: 2023-02-13 20:17:18
+ * @LastEditors: shenhaojie
+ * @LastEditTime: 2023-02-13 20:16:47
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -16,11 +25,18 @@ typedef signed char        int8;    /* 8-bit quantity  */
 typedef signed short       int16;   /* 16-bit quantity */
 typedef signed int         int32;   /* 32-bit quantity */
 
+/* 随机生成区间整数 */
 /* 结果值将含a不含b，[a, b) */
-#define random_1(a,b) ((rand()%(b-a))+a)
+#define random_1(a, b) ((rand() % (b - a)) + a)
 /* 结果值将含a含b,[a, b] */
-#define random_2(a,b) ((rand()%(b-a+1))+a)
- 
+#define random_2(a, b) ((rand() % (b - a + 1)) + a)
+
+/* 随机生成区间浮点数 */
+/* 结果值将含a不含b，[a, b) */
+#define randomf_1(a, b) (a + 1.0 * (rand() % RAND_MAX) / (RAND_MAX * (b - a)))
+/* 结果值将含a含b,[a, b], 如[10.3125, 11.3125], a = 10.3125, b = 11.3125 */
+#define randomf_2(a, b) (a + 1.0 * rand() / RAND_MAX * (b - a))
+
 void main( void )
 {
     int i=RAND_MAX;
