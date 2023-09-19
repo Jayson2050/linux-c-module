@@ -7,7 +7,8 @@
 #
 # Note 2! The CFLAGS definition is now in the main makefile...
 
-export CC = gcc
+# export CC = gcc
+export CC = /xel_work_local/toolchain/gcc-linaro-4.9-2016.02-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc
 CFLAGS+= -I. 
 
 SRC += debug_print.c

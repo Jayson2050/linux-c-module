@@ -13,7 +13,7 @@ CFLAGS+= -I.
 SRC += runtime.c
 
 OBJ = $(SRC:.c=.o)
-BIN := endian_test.exe
+BIN := test.exe
 
 $(BIN): $(OBJ)
 	$(CC) -o $@ $(OBJ) -g -W $(CFLAGS)
