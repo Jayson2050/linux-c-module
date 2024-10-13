@@ -30,6 +30,7 @@ int main(void)
     int i;
     int a[SIZE];
     unsigned int b[SIZE];
+	char c[SIZE];
 
     memset(a, 0, sizeof(a));
     printf("memset 0 test:\r\n");
@@ -59,12 +60,25 @@ int main(void)
         printf("a[%d] = %d \r\n", i, a[i]);
     }
 
-
     memset(b, -1, sizeof(b));
     printf("int16 b[], memset -1 test:\r\n");
     for(i = 0; i < SIZE; i++)
     {
         printf("b[%d] = %d \r\n", i, b[i]);
+    }
+	
+	memset(c, 1, sizeof(c));
+    printf("memset 1 test:\r\n");
+    for(i = 0; i < SIZE; i++)
+    {
+        printf("c[%d] = %d \r\n", i, c[i]);
+    }
+	
+	memset(&c, 1, sizeof(c));
+    printf("&c memset 1 test:\r\n");
+    for(i = 0; i < SIZE; i++)
+    {
+        printf("c[%d] = %d \r\n", i, c[i]);
     }
 
     return 0;

@@ -1,3 +1,12 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @@Company: DCIT-SH
+ * @Author: shenhaojie
+ * @Date: 2023-04-27 15:18:04
+ * @LastEditors: shenhaojie
+ * @LastEditTime: 2024-01-03 15:45:51
+ */
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdio.h>
@@ -26,8 +35,8 @@ int main()
 	inet_aton("127.0.0.1", &(addr.sin_addr));
  
 	int addrlen = sizeof(addr);
-	int listen_socket =  connect(client_socket,  (struct sockaddr *)&addr, addrlen);  //连接服务器
-	if(listen_socket == -1)
+	int connect_socket =  connect(client_socket,  (struct sockaddr *)&addr, addrlen);  //连接服务器
+	if(connect_socket == -1)
 	{
 		perror("connect");
 		return -1;
@@ -52,7 +61,7 @@ int main()
 			break;
 		}
 	}
-	close(listen_socket);
+	close(connect_socket);
 	
 	return 0;
 }

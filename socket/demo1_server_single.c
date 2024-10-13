@@ -24,7 +24,7 @@ int Creat_socket()    //创建套接字和初始化以及监听函数
     addr.sin_port = htons(PORT);  /* 端口号 */
     addr.sin_addr.s_addr = htonl(INADDR_ANY);   /* IP地址 */
 	
-	int ret = bind(listen_socket, (struct sockaddr *)&addr, sizeof(addr));  //连接
+	int ret = bind(listen_socket, (struct sockaddr *)&addr, sizeof(addr));  //绑定
 	if(ret == -1)
 	{
 		perror("bind");
